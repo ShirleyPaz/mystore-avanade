@@ -4,7 +4,7 @@ const routes = require('./src/routes/productsRoutes')
 const express = require('express')
 const app = express()
 
-async function main() {
+function main() {
     const server = new Server();
     app.use(bodyParser.json());
     app.use("api", routes);
