@@ -3,7 +3,7 @@ const typeorm = require('typeorm')
 class DatabasePD {
     constructor(post, host) {
         this.port = post;
-        this.host = host;
+        this.host = host;   
     }
 
     conectar() {
@@ -15,7 +15,8 @@ class DatabasePD {
             password: "natura",
             database: "products",
             synchronize: true,
-            entitySchemas: [
+            entities: [
+                require("./entity/productSchema"),
             ]
         })
     }
