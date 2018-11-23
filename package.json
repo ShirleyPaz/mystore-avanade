@@ -1,7 +1,7 @@
 {
    "name": "MyStore",
    "version": "0.0.1",
-   "description": "Awesome project developed with TypeORM.",
+   "description": "API para cadastro e consulta de produtos.",
    "dependencies": {
       "body-parser": "^1.18.3",
       "express": "^4.16.4",

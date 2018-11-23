@@ -1,7 +1,7 @@
 /*export */ class Product {
     constructor(id, code, desc) {
-        this.product_uid = id;
-        this.product_code = code;
+        this.uid = id;
+        this.code = code;
         this.description = desc;
     }
 }
