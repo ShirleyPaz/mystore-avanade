@@ -5,10 +5,10 @@ module.exports = new EntitySchema({
     name: "Product",
     target: Product,
     columns: {
-        uid: {
+        id: {
             primary: true,
-            type: "uuid",
-            generated: "uuid"
+            type: "bigint",
+            generated: true
         },
         code: {
             type: "int",
@@ -17,5 +17,5 @@ module.exports = new EntitySchema({
         description: {
             type: "varchar"
         }
-    },
-});
+    }
+})

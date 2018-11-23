@@ -6,12 +6,12 @@ const routes = express.Router()
 connection.then( connection => {
     const productRepository = connection.getRepository("Product");
 
-    routes.get("/products/", async function(req, res) {
+    routes.get("/products", async function(req, res) {
       res.send(await productRepository.find());
     });
 
     routes.get("/products/:id", async function(req, res) {
-      res.send(await productRepository.findOne({ code: req.param.id }));
+      res.send(await productRepository.findOne({ code: req.params.id }));
     });
 
     routes.post("/products", async (req, res) => {
