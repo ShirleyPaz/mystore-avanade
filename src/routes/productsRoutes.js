@@ -12,11 +12,12 @@ connection.then(connection => {
   });
 
   routes.get("/products/:id", async function (req, res) {
-    if (res) {
-      res.status(404).send('Não encontrado');
+    const product = await repo.findOne({ product_code: req.params.id })
+    if (product) {
+      res.status(200).send(product);
+    } else {
+      res.status(404).send('Produto não encontrado!');
     }
-    res.status(200).send(await repo.findOne({ product_code: req.params.id }));
-
   });
 
   routes.post("/products", async (req, res) => {
@@ -29,15 +30,12 @@ connection.then(connection => {
 
     // define the validation schema
     const schema = Joi.object().keys({
-      product_code: Joi.number().required(),
+      product_code: Joi.number().integer().required(),
       description: Joi.string().required(),
     });
 
     // validate the request data against the schema
     Joi.validate(data, schema, async (err, value) => {
-
-      // create a random number as uid
-      const id = Math.ceil(Math.random() * 9999999);
 
       if (err) {
         // send a 400 error response if validation fails
@@ -52,7 +50,7 @@ connection.then(connection => {
         res.json({
           status: 'success',
           message: 'Produto cadastrado com sucesso!',
-          data: Object.assign({ id }, value)
+          data: data
         });
         res.send(await repo.save(req.body));
       };

@@ -7,8 +7,8 @@ module.exports = new EntitySchema({
     columns: {
         product_uid: {
             primary: true,
-            type: "bigint",
-            generated: true
+            type: "uuid",
+            generated: "uuid"
         },
         product_code: {
             type: "int",
